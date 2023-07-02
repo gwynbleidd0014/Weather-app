@@ -3,7 +3,7 @@
 
 export default async function searchWeatherByCity(city) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=d409c877c1dc4a8f84d201629233006&q=${city}&day=5`,
+    `https://api.weatherapi.com/v1/forecast.json?key=d409c877c1dc4a8f84d201629233006&q=${city}&day=5`,
     {
       mode: "cors",
     }
