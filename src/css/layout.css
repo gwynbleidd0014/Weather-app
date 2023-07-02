@@ -24,3 +24,10 @@
 .weather-display {
   grid-area: weather-display;
 }
+
+@media screen and (max-width: 600px) {
+  .app {
+    padding: 1em;
+    padding-top: 4em;
+  }
+}
