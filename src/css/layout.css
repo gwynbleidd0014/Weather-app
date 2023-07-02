@@ -1,0 +1,26 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-areas:
+    "main"
+    "..."
+    "weather-display";
+  background: url(../assets/background.png) no-repeat center;
+  background-size: cover;
+  padding: 5em;
+  color: white;
+}
+
+.main {
+  grid-area: main;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.weather-display {
+  grid-area: weather-display;
+}

@@ -1,0 +1,52 @@
+.condition {
+  font-size: 2.5rem;
+  margin-bottom: 0.2em;
+  white-space: nowrap;
+}
+
+.city {
+  margin-bottom: 0.8em;
+  font-size: 1.2rem;
+}
+
+.time {
+  margin-bottom: 1em;
+}
+
+.tempreture {
+  font-size: 4rem;
+  margin-bottom: 0.2em;
+  font-weight: 600;
+}
+
+.search-wrapper {
+  padding: 0.2em 0.5em;
+  border-bottom: 2px solid white;
+  display: inline-flex;
+}
+
+input[type="text"] {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  width: 170px;
+}
+
+input[type="text"]::placeholder {
+  opacity: 1;
+  color: white;
+}
+
+.search-icon {
+  height: 1.5em;
+  transform: rotate(270deg);
+  flex: 1;
+}
+
+.search-icon:hover {
+  cursor: pointer;
+}

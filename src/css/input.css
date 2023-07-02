@@ -1,0 +1,14 @@
+input[type="text"] {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+input[type="text"]::placeholder {
+  opacity: 1;
+  color: white;
+}

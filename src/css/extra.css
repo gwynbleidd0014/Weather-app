@@ -1,0 +1,23 @@
+.extra {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  margin-bottom: 2em;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 25px;
+}
+
+.header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.5em;
+}
+
+.info {
+  font-size: 1.5rem;
+  font-weight: 400;
+}

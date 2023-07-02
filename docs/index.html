@@ -4,7 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather-app</title>
-    <script src="./main.js"></script>
+    <script src="./main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="app">
+      <div class="main">
+        <div class="search-and-current">
+          <div class="condition"></div>
+          <div class="city"></div>
+          <div class="date-time">
+            <div class="date"></div>
+            <div class="time"></div>
+          </div>
+          <div class="tempreture"></div>
+          <div class="search-wrapper">
+            <input
+              type="text"
+              class="search-location"
+              placeholder="Search Location..."
+            />
+            <img src="" alt="" class="search-icon" />
+          </div>
+        </div>
+        <div class="extra-info">
+          <div class="feels-like extra">
+            <img src="" alt="" class="icon" />
+            <div class="wrapper">
+              <div class="header">Feels Like</div>
+              <div class="info"></div>
+            </div>
+          </div>
+          <div class="humidity extra">
+            <img src="" alt="" class="icon" />
+            <div class="wrapper">
+              <div class="header">Humidity</div>
+              <div class="info"></div>
+            </div>
+          </div>
+          <div class="chance-of-rain extra">
+            <img src="" alt="" class="icon" />
+            <div class="wrapper">
+              <div class="header">Chance Of Rain</div>
+              <div class="info"></div>
+            </div>
+          </div>
+          <div class="wind-speed extra">
+            <img src="" alt="" class="icon" />
+            <div class="wrapper">
+              <div class="header">Wind Speed</div>
+              <div class="info"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="weather-display"></div>
+    </div>
+  </body>
 </html>

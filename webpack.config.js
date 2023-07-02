@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, "docs"),
   },
   mode: "development",
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -22,6 +23,10 @@ module.exports = {
             presets: [["@babel/preset-env", { targets: "defaults" }]],
           },
         },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },

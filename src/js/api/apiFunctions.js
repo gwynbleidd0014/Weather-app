@@ -3,11 +3,11 @@
 
 export default async function searchWeatherByCity(city) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=d409c877c1dc4a8f84d201629233006&q=${city}`,
+    `http://api.weatherapi.com/v1/forecast.json?key=d409c877c1dc4a8f84d201629233006&q=${city}&day=5`,
     {
       mode: "cors",
     }
   );
   const data = await response.json();
-  console.log(data);
+  return data;
 }

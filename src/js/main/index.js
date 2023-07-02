@@ -1,3 +1,9 @@
+import "../../css/style.css";
+import { loadUi } from "../dom/dom";
 import searchWeatherByCity from "../api/apiFunctions.js";
 
-searchWeatherByCity("tbilisi");
+(async function () {
+  const data = await searchWeatherByCity("tbilisi");
+  loadUi(data);
+  console.log(data);
+})();
