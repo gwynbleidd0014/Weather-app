@@ -1,4 +1,4 @@
-import parseDate from "../utils/utils.js";
+import { parseDate, parseDaily } from "../utils/utils.js";
 import searchI from "../../assets/search.svg";
 import thermoI from "../../assets/thermo.svg";
 import humidityI from "../../assets/humidity.svg";
@@ -18,19 +18,24 @@ const humidity = document.querySelector(".humidity");
 const chanceOfRain = document.querySelector(".chance-of-rain");
 const windSpeed = document.querySelector(".wind-speed");
 const input = document.querySelector("input");
+const dailyWeather = document.querySelector(".daily-weather");
 
 export { loadUi, getInputValue };
 
 function loadUi(data) {
   loadSearchAndCurrent(data);
+  console.log("doneone");
   loadExtraInfo(data);
+  console.log("donetwo");
+  populateDaily(data);
+  console.log("donetree");
   searchImg.src = searchI;
 }
 
 function loadSearchAndCurrent(data) {
   condition.textContent = data?.current?.condition?.text;
   city.textContent = data?.location?.name;
-  const dateObj = parseDate(data);
+  const dateObj = parseDate(data?.location?.localtime);
   date.textContent = `${dateObj.day}, ${dateObj.ord} ${dateObj.month}'${dateObj.year}`;
   time.textContent = dateObj.time;
   tempreture.textContent = data.current.temp_c + String.fromCodePoint(8451);
@@ -60,9 +65,44 @@ async function searchForWeather() {
   loadUi(data);
 }
 
+function populateDaily(data) {
+  const week = parseDaily(data.forecast.forecastday);
+  dailyWeather.innerHTML = "";
+  week.forEach((dayInfo) => {
+    const divWrapper = document.createElement("div");
+    const weekDay = document.createElement("div");
+    const maxTemp = document.createElement("div");
+    const minTemp = document.createElement("div");
+    const tempWrap = document.createElement("div");
+    const icon = document.createElement("img");
+
+    divWrapper.className = "day-info-wrapper";
+    weekDay.className = "weekday";
+    maxTemp.className = "max-temp";
+    minTemp.className = "min-temp";
+    tempWrap.className = "temp-wrap";
+    icon.className = "weather-icon";
+
+    weekDay.textContent = dayInfo.weekDay;
+    maxTemp.textContent = `${dayInfo.maxTemp} ${String.fromCodePoint(8451)}`;
+    minTemp.textContent = `${dayInfo.minTemp} ${String.fromCodePoint(8451)}`;
+    icon.src = dayInfo.iconPath;
+    icon.alt = dayInfo.condition;
+
+    tempWrap.append(maxTemp, minTemp);
+    divWrapper.append(weekDay, tempWrap, icon);
+    dailyWeather.appendChild(divWrapper);
+  });
+}
+
 input.addEventListener("keydown", (e) => {
   if (e.key != "Enter") return;
 
+  searchForWeather();
+  input.value = "";
+});
+
+searchImg.addEventListener("click", (e) => {
   searchForWeather();
   input.value = "";
 });

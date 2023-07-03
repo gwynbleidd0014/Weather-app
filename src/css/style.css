@@ -2,6 +2,7 @@
 @import "./layout.css";
 @import "./search-and-current.css";
 @import "./extra.css";
+@import "./display-weather";
 
 *,
 *::after,

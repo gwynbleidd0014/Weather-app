@@ -2,6 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
+  overflow-x: hidden;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 1fr;
   grid-template-areas:
@@ -12,6 +13,7 @@
   background-size: cover;
   padding: 5em;
   color: white;
+  row-gap: 4em;
 }
 
 .main {
@@ -27,7 +29,7 @@
 
 @media screen and (max-width: 600px) {
   .app {
-    padding: 1em;
+    padding: 2em;
     padding-top: 4em;
   }
 }
