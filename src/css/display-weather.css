@@ -146,4 +146,6 @@
 
 .weather-display {
   min-height: 200px;
+  height: max-content;
+  margin-bottom: 2em;
 }
