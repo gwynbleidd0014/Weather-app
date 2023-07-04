@@ -5,6 +5,8 @@ import humidityI from "../../assets/humidity.svg";
 import rainyI from "../../assets/rainy.svg";
 import windI from "../../assets/wind.svg";
 import searchWeatherByCity from "../api/apiFunctions.js";
+import leftI from "../../assets/arrow_left.svg";
+import rightI from "../../assets/arrow_right.svg";
 
 //DOM ELEMENTS
 const condition = document.querySelector(".condition");
@@ -22,6 +24,9 @@ const dailyWeather = document.querySelector(".daily-weather");
 const hourlyWeather = document.querySelector(".hourly-weather");
 const daily = document.querySelector(".daily");
 const hourly = document.querySelector(".hourly");
+const left = document.querySelector(".left");
+const right = document.querySelector(".right");
+const sections = document.querySelector(".sections");
 
 const cel = String.fromCodePoint(8451);
 let hourlyBool = false;
@@ -30,6 +35,7 @@ export { loadUi, getInputValue };
 
 function loadUi(data) {
   loadSearchAndCurrent(data);
+  loadArrows();
 
   loadExtraInfo(data);
 
@@ -39,6 +45,11 @@ function loadUi(data) {
     populateDaily(data);
   }
   searchImg.src = searchI;
+}
+
+function loadArrows() {
+  left.src = leftI;
+  right.src = rightI;
 }
 
 function loadSearchAndCurrent(data) {
@@ -111,12 +122,13 @@ function populateHourly(data, stage = 1) {
     data.forecast.forecastday[0].hour,
     data.location.localtime
   );
+  console.log(hours);
   dailyWeather.innerHTML = "";
   hourlyWeather.innerHTML = "";
   let start = null;
   let end = null;
   start = stage === 1 ? 0 : stage === 2 ? 8 : 15;
-  end = stage === 1 ? 7 : stage === 2 ? 15 : hours.length - 1;
+  end = stage === 1 ? 7 : stage === 2 ? 15 : hours.length - 2;
 
   for (let i = start; i <= end; i++) {
     const divWrapper = document.createElement("div");
@@ -139,6 +151,23 @@ function populateHourly(data, stage = 1) {
   }
 }
 
+async function move(e) {
+  const currentDot = document.querySelector(".active");
+  const currentId = parseInt(currentDot.dataset.id);
+  const arrow = e.target.classList.contains("left") ? "left" : "right";
+
+  if (currentId === 1 && arrow === "left") return;
+  if (currentId === 3 && arrow === "right") return;
+
+  currentDot.classList.toggle("active");
+
+  const nextId = arrow === "left" ? currentId - 1 : currentId + 1;
+  document.querySelector(`[data-id="${nextId}"]`).classList.toggle("active");
+
+  const data = await searchWeatherByCity("");
+  populateHourly(data, nextId);
+}
+
 input.addEventListener("keydown", (e) => {
   if (e.key != "Enter") return;
 
@@ -153,10 +182,19 @@ searchImg.addEventListener("click", (e) => {
 
 daily.addEventListener("click", (e) => {
   hourlyBool = false;
+  sections.classList.remove("visible");
+  daily.className = "daily toggler chosen";
+  hourly.className = "hourly toggler";
   searchForWeather();
 });
 
 hourly.addEventListener("click", (e) => {
+  sections.classList.add("visible");
+  daily.className = "daily toggler";
+  hourly.className = "hourly toggler chosen";
   hourlyBool = true;
   searchForWeather();
 });
+
+left.addEventListener("click", move);
+right.addEventListener("click", move);

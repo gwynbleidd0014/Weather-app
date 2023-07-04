@@ -137,9 +137,6 @@
   .weather-icon {
     width: 30px;
   }
-  .hourly-weather {
-    padding: 4em;
-  }
 }
 
 .hour,
