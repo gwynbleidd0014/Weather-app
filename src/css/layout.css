@@ -31,5 +31,10 @@
   .app {
     padding: 1em;
     padding-top: 4em;
+    row-gap: 10em;
+    grid-template-areas:
+      "main"
+      "weather-display"
+      "weather-display";
   }
 }
