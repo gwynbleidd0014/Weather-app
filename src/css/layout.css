@@ -9,7 +9,12 @@
     "main"
     "..."
     "weather-display";
-  background: url(../assets/background.png) no-repeat center;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.253),
+      rgba(0, 0, 0, 0.219)
+    ),
+    url(../assets/bg.png) no-repeat center;
   background-size: cover;
   padding: 5em;
   color: white;
