@@ -40,7 +40,10 @@ function loadUi(data) {
   loadExtraInfo(data);
 
   if (hourlyBool) {
-    populateHourly(data);
+    populateHourly(
+      data,
+      parseInt(document.querySelector(".active").dataset.id)
+    );
   } else {
     populateDaily(data);
   }
