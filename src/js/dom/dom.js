@@ -106,3 +106,23 @@ searchImg.addEventListener("click", (e) => {
   searchForWeather();
   input.value = "";
 });
+
+function productOfArray(arr) {
+  if (arr.length === 1) {
+    return arr[0];
+  } else {
+    return arr[arr.length - 1] + productOfArray(arr.slice(arr.length - 1));
+  }
+}
+
+productOfArray([1, 2, 3]);
+
+function totalInt(times, n) {
+  if (times === 1) {
+    return [n];
+  } else {
+    return [n, ...totalInt(times - 1, n)];
+  }
+}
+
+console.log(totalInt(4, 5));

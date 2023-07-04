@@ -50,3 +50,32 @@ input[type="text"]::placeholder {
 .search-icon:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .condition {
+    font-size: 1.2rem;
+    white-space: wrap;
+    margin-bottom: 1em;
+  }
+
+  .city {
+    font-size: 1rem;
+  }
+
+  .date-time {
+    font-size: 0.7rem;
+  }
+
+  .tempreture {
+    font-size: 2rem;
+  }
+
+  input[type="text"] {
+    font-size: 0.6rem;
+    width: 100px;
+  }
+
+  .search-icon {
+    height: 1em;
+  }
+}
