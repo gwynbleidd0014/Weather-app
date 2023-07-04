@@ -7,10 +7,9 @@ import rainy from "../../assets/rainy.svg";
 import snow from "../../assets/snow.svg";
 import sun from "../../assets/sun.svg";
 
-export { parseDate, parseDaily };
+export { parseDate, parseDaily, parseHourly };
 
 function parseDate(date) {
-  // let date = data?.location?.localtime;
   const year = parseInt(date.split("-")[0]);
   const monthIndex = parseInt(date.split("-")[1]) - 1;
   const day = parseInt(date.split("-")[2].split(" ")[0]);
@@ -76,7 +75,6 @@ function getOrdinal(n) {
 
 function parseDaily(data) {
   const weekInfo = [];
-  console.log(data);
   if (!data) return;
   data.forEach((day) => {
     weekInfo.push({
@@ -90,7 +88,35 @@ function parseDaily(data) {
   return weekInfo;
 }
 
-function parseHourly() {}
+function parseHourly(hours, localtime) {
+  const hourly = [];
+  hours.forEach((hour) => {
+    hourly.push({
+      temp: hour.temp_c,
+      time: parseDate(hour.time).time,
+      iconPath: getIcon(hour.condition.text),
+      condition: hour.condition.text,
+    });
+  });
+  return transformHourly(hourly, localtime);
+}
+
+function transformHourly(hourly, localtime) {
+  const splited = localtime.split("");
+  splited[splited.length - 1] = "0";
+  splited[splited.length - 2] = "0";
+  const time = splited.slice(-5).join("");
+
+  const i = hourly.findIndex((hour) => {
+    return hour.time === time;
+  });
+
+  if (i === 0) return hourly;
+
+  const secondPart = hourly.slice(i);
+  const firstPart = hourly.slice(0, i);
+  return [...secondPart, ...firstPart];
+}
 
 function getIcon(c) {
   let i = null;

@@ -1,23 +1,27 @@
-.daily-weather {
+.daily-weather,
+.hourly-weather {
   display: flex;
   justify-content: space-between;
   gap: 2em;
   white-space: nowrap;
 }
 
-.day-info-wrapper {
+.day-info-wrapper,
+.hour-info-wrapper {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.weekday {
+.weekday,
+.hour {
   font-size: 1.5rem;
   margin-bottom: 1em;
   letter-spacing: 1.4px;
 }
 
-.max-temp {
+.max-temp,
+.temp {
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 0.1em;
@@ -37,13 +41,14 @@
       flex-direction: column;
     } */
 
-  .weekday {
+  .weekday,
+  .hour {
     font-size: 0.8rem;
     margin-bottom: 1em;
     letter-spacing: 1.4px;
   }
-
-  .max-temp {
+  .max-temp,
+  .temp {
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 0.1em;
@@ -60,11 +65,12 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .weekday {
+  .weekday,
+  .hour {
     margin-bottom: 1em;
   }
-
-  .max-temp {
+  .max-temp,
+  .temp {
     font-weight: 600;
     font-size: 1.5rem;
     margin-bottom: 0.1em;
@@ -80,25 +86,29 @@
   }
 }
 
-@media screen and (max-width: 890px) {
-  .daily-weather {
+@media screen and (max-width: 960px) {
+  .daily-weather,
+  .hourly-weather {
     flex-direction: column;
     align-items: center;
     max-width: 400px;
     margin: 0 auto;
   }
 
-  .day-info-wrapper {
+  .day-info-wrapper,
+  .hour-info-wrapper {
     flex-direction: row;
     width: 100%;
     gap: 2em;
+    justify-content: space-between;
   }
 
   .temp-wrap {
     margin-left: auto;
   }
 
-  .weekday {
+  .weekday,
+  .hour {
     font-size: 1.4rem;
     margin-bottom: 1em;
     letter-spacing: 1.4px;
@@ -106,12 +116,14 @@
 }
 
 @media screen and (max-width: 600px) {
-  .weekday {
+  .weekday,
+  .hour {
     margin-bottom: 1em;
     font-size: 1rem;
   }
 
-  .max-temp {
+  .max-temp,
+  .temp {
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 0.1em;
@@ -125,4 +137,16 @@
   .weather-icon {
     width: 30px;
   }
+  .hourly-weather {
+    padding: 4em;
+  }
+}
+
+.hour,
+.temp {
+  margin-bottom: 0.5em;
+}
+
+.weather-display {
+  min-height: 200px;
 }

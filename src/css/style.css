@@ -3,6 +3,7 @@
 @import "./search-and-current.css";
 @import "./extra.css";
 @import "./display-weather";
+@import "./weather-togglers.css";
 
 *,
 *::after,

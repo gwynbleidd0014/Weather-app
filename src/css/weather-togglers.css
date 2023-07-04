@@ -1,0 +1,22 @@
+.changer {
+  display: flex;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+.toggler {
+  padding: 0.4em 0.8em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid white;
+}
+
+.toggler:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  .changer {
+    justify-content: center;
+  }
+}
